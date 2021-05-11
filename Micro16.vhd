@@ -1,7 +1,7 @@
 
 entity Micro16 is
 	port(clk : in bit;counter : out natural);
-end;
+end entity;
 
 architecture test of Micro16 is
 begin
