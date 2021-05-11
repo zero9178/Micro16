@@ -4,7 +4,8 @@
 
 if [ $# -eq 0 ] 
 then
-	EXECUTABLES=$(find work -executable -type f -printf '%p:' | sed 's/:$/\n/')
+	# Register tests here
+	EXECUTABLES="./work/micro16_tb"
 else
 	EXECUTABLES=
 	for var in "$@"
