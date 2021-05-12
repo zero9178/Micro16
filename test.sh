@@ -5,7 +5,7 @@
 if [ $# -eq 0 ] 
 then
 	# Register tests here
-	EXECUTABLES="./work/micro16_tb"
+	EXECUTABLES="./work/micro16_tb:./work/decoder_tb"
 else
 	EXECUTABLES=
 	for var in "$@"
