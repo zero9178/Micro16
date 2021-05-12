@@ -49,10 +49,45 @@ begin
 		assert rd_wr = '0';
 		assert memory_select = '0';
 		assert sbus_enable = '1';
-		assert sbus = B"0011";
+		assert sbus = B"0100";
 		assert bbus = B"0000";
 		assert abus = B"0001";
 		assert address = X"00";
+		
+		-- Ro <- R0 + (-1); goto ...
+		input_instruction <= X"68142469";
+		wait for T;
+		assert mbr_mux = '0';
+		assert condition = cond_none;
+		assert alu_operation = alu_add;
+		assert shifter_operation = shifter_noop;
+		assert mbr_enable = '0';
+		assert mar_enable = '0';
+		assert rd_wr = '0';
+		assert memory_select = '0';
+		assert sbus_enable = '1';
+		assert sbus = B"0100";
+		assert bbus = B"0010";
+		assert abus = B"0100";
+		assert address = X"69";
+		
+		-- R2 <- ~R0; MAR <- R0; rd
+		input_instruction <= X"18F64400";
+		wait for T;
+		assert mbr_mux = '0';
+		assert condition = cond_no_jump;
+		assert alu_operation = alu_neg;
+		assert shifter_operation = shifter_noop;
+		assert mbr_enable = '0';
+		assert mar_enable = '1';
+		assert rd_wr = '1';
+		assert memory_select = '1';
+		assert sbus_enable = '1';
+		assert sbus = B"0110";
+		assert bbus = B"0100";
+		assert abus = B"0100";
+		assert address = X"00";
+		
 		wait;
 	end process;
 

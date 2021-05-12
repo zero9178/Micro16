@@ -10,7 +10,7 @@ entity decoder is
 		  shifter_operation : out shifter_op;
 		  mbr_enable,mar_enable,rd_wr,memory_select,sbus_enable : out bit;
 		  sbus,bbus,abus : out bit_vector(3 downto 0);
-		  address : out bit_vector(7 to 0));
+		  address : out bit_vector(7 downto 0));
 end entity;
 
 
