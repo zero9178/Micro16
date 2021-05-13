@@ -23,7 +23,7 @@ fi
 
 ( IFS=:
 	for p in $EXECUTABLES; do
-		COMMAND="${p} --vcd=./work/$(basename $p).vcd" 
+		COMMAND="${p} --wave=./work/$(basename $p).ghw" 
 		echo "Executing ${COMMAND}"
 		eval $COMMAND
 	done
