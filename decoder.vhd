@@ -1,5 +1,4 @@
 
-library work;
 use work.isa.all;
 
 entity decoder is
