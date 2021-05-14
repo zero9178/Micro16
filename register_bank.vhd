@@ -32,7 +32,7 @@ begin
 								);
 	end generate;
 
-	read_process : process (b_select,a_select) is
+	read_process : process (b_select,a_select,clk,rst) is
 	
 		procedure assign(signal bus_out : out data_word;reg_select : bus_operand) is
 		begin
