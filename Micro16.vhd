@@ -29,7 +29,9 @@ architecture behavioural of Micro16 is
     
     signal abus, bbus, sbus, a_reg_out, mbr_out : data_word;
     
-    signal alu_a_in, alu_b_in : bit_vector(data_word'RANGE);
+    subtype bv is bit_vector(data_word'RANGE);
+    
+    signal alu_a_in, alu_b_in : bv;
     signal alu_out : data_word;
     
     signal mar_clock : bit;
@@ -96,15 +98,14 @@ begin
                             
     abus <= a_reg_out when mbr_mux = '0' else mbr_out;
         
-
     a_reg : entity work.reg
-                port map(input => bit_vector(abus),
+                port map(input => bv(abus),
                          rst => rst,
                          clk => clock2,
                          output => alu_a_in);
                             
     b_reg : entity work.reg
-                port map(input => bit_vector(bbus),
+                port map(input => bv(bbus),
                          rst => rst,
                          clk => clock2,
                          output => alu_b_in);
@@ -131,7 +132,7 @@ begin
     mar_clock <= clock3 and mar_enable;
                                 
     mar : entity work.reg
-                port map(input => bit_vector(bbus),
+                port map(input => bv(bbus),
                          clk => mar_clock,
                          output => address_bus);
 
