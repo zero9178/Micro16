@@ -6,7 +6,7 @@ use work.isa.all;
 entity alu is
 	port(operation : in alu_op;
 		  a_operand,b_operand : in data_word;
-		  s_operand : out data_word;
+		  s_result : out data_word;
 		  negative_flag,zero_flag : out bit);
 end entity;
 
@@ -29,7 +29,7 @@ begin
 		end case;
 	end process;
 	
-	s_operand <= result;
+	s_result <= result;
 	negative_flag <= result(data_word'HIGH);
 	zero_flag <= '1' when result = 0 else '0';
 end architecture;

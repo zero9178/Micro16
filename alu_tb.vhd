@@ -11,7 +11,7 @@ architecture test of alu_tb is
 constant T : time := 20 ns;
 
 signal operation : alu_op;
-signal a_operand,b_operand,s_operand : data_word;
+signal a_operand,b_operand,s_result : data_word;
 signal negative_flag,zero_flag : bit;
 
 begin
@@ -20,7 +20,7 @@ begin
 				port map(operation => operation,
 							a_operand => a_operand,
 							b_operand => b_operand,
-							s_operand => s_operand,
+							s_result => s_result,
 							negative_flag => negative_flag,
 							zero_flag => zero_flag);
 							
@@ -32,7 +32,7 @@ begin
 		operation <= alu_abus;
 		a_operand <= X"0007";
 		wait for T;
-		assert s_operand = 7;
+		assert s_result = 7;
 		assert negative_flag = '0';
 		assert zero_flag = '0';
 		
@@ -40,14 +40,14 @@ begin
 		operation <= alu_abus;
 		a_operand <= X"FFF9";
 		wait for T;
-		assert (not s_operand) + 1 = 7;
+		assert (not s_result) + 1 = 7;
 		assert negative_flag = '1';
 		assert zero_flag = '0';
 		
 		operation <= alu_abus;
 		a_operand <= X"0000";
 		wait for T;
-		assert s_operand = 0;
+		assert s_result = 0;
 		assert negative_flag = '0';
 		assert zero_flag = '1';
 		
@@ -56,7 +56,7 @@ begin
 		a_operand <= to_unsigned(8, data_word_size);
 		b_operand <= to_unsigned(5, data_word_size);
 		wait for T;
-		assert s_operand = 13;
+		assert s_result = 13;
 		assert negative_flag = '0';
 		assert zero_flag = '0';
 		
@@ -65,7 +65,7 @@ begin
 		a_operand <= to_unsigned(7, data_word_size);
 		b_operand <= (not to_unsigned(5, data_word_size)) + 1;
 		wait for T;
-		assert s_operand = 2;
+		assert s_result = 2;
 		assert negative_flag = '0';
 		assert zero_flag = '0';
 		
@@ -73,7 +73,7 @@ begin
 		a_operand <= to_unsigned(5, data_word_size);
 		b_operand <= (not to_unsigned(7, data_word_size)) + 1;
 		wait for T;
-		assert (not s_operand) + 1 = 2;
+		assert (not s_result) + 1 = 2;
 		assert negative_flag = '1';
 		assert zero_flag = '0';
 		
@@ -82,7 +82,7 @@ begin
 		a_operand <= to_unsigned(11, data_word_size);
 		b_operand <= to_unsigned(5, data_word_size);
 		wait for T;
-		assert s_operand = 1;
+		assert s_result = 1;
 		assert negative_flag = '0';
 		assert zero_flag = '0';
 		
@@ -90,14 +90,14 @@ begin
 		operation <= alu_neg;
 		a_operand <= to_unsigned(11, data_word_size);
 		wait for T;
-		assert not s_operand = 11;
+		assert not s_result = 11;
 		assert negative_flag = '1';
 		assert zero_flag = '0';
 		
 		operation <= alu_neg;
 		a_operand <= not to_unsigned(11, data_word_size);
 		wait for T;
-		assert s_operand = 11;
+		assert s_result = 11;
 		assert negative_flag = '0';
 		assert zero_flag = '0';
 	

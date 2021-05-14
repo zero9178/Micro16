@@ -10,6 +10,8 @@ package isa is
 	
 	type shifter_op is (shifter_noop,shifter_left,shifter_right);
 	
+	type bus_operand is ('0','1',neg_one,pc,r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,ac);
+	
 	constant data_word_size : natural := 16;
 	
 	subtype data_word is unsigned(data_word_size - 1 downto 0);

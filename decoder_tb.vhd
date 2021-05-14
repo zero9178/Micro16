@@ -14,7 +14,7 @@ architecture arch of decoder_tb is
 	signal alu_operation : alu_op;
 	signal shifter_operation : shifter_op;
 	signal mbr_enable,mar_enable,rd_wr,memory_select,sbus_enable : bit;
-	signal sbus,bbus,abus : bit_vector(3 downto 0);
+	signal sbus,bbus,abus : bus_operand;
 	signal address : bit_vector(7 downto 0);
 
 begin
@@ -49,9 +49,9 @@ begin
 		assert rd_wr = '0';
 		assert memory_select = '0';
 		assert sbus_enable = '1';
-		assert sbus = B"0100";
-		assert bbus = B"0000";
-		assert abus = B"0001";
+		assert sbus = R0;
+		assert bbus = '0';
+		assert abus = '1';
 		assert address = X"00";
 		
 		-- Ro <- R0 + (-1); goto ...
@@ -66,9 +66,9 @@ begin
 		assert rd_wr = '0';
 		assert memory_select = '0';
 		assert sbus_enable = '1';
-		assert sbus = B"0100";
-		assert bbus = B"0010";
-		assert abus = B"0100";
+		assert sbus = r0;
+		assert bbus = neg_one;
+		assert abus = r0;
 		assert address = X"69";
 		
 		-- R2 <- ~R0; MAR <- R0; rd
@@ -83,9 +83,9 @@ begin
 		assert rd_wr = '1';
 		assert memory_select = '1';
 		assert sbus_enable = '1';
-		assert sbus = B"0110";
-		assert bbus = B"0100";
-		assert abus = B"0100";
+		assert sbus = r2;
+		assert bbus = r0;
+		assert abus = r0;
 		assert address = X"00";
 		
 		wait;
