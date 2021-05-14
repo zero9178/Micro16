@@ -14,20 +14,11 @@ architecture behaviour of alu is
 	signal result : data_word;
 begin
 
-	calc : process(operation,a_operand,b_operand) is
-	
-	begin
-		case operation is
-			when alu_abus =>
-				result <= a_operand;
-			when alu_add =>
-				result <= a_operand + b_operand;
-			when alu_and =>
-				result <= a_operand and b_operand;
-			when alu_neg =>
-				result <= not a_operand;
-		end case;
-	end process;
+	with operation select
+		result <= a_operand when alu_abus,
+					 a_operand + b_operand when alu_add,
+					 a_operand and b_operand when alu_and,
+					 not a_operand when alu_neg;
 	
 	s_result <= result;
 	negative_flag <= result(data_word'HIGH);
