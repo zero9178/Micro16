@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "MAX 10"
 set_global_assignment -name DEVICE 10M16SAU169C8G
-set_global_assignment -name TOP_LEVEL_ENTITY micro_inst_reg
+set_global_assignment -name TOP_LEVEL_ENTITY shifter
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:05:20  MAY 10, 2021"
 set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1 Lite Edition"
@@ -64,7 +64,7 @@ set_global_assignment -name FLOW_ENABLE_POWER_ANALYZER ON
 set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 set_global_assignment -name VHDL_FILE Micro16_tb.vhd
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH micro_inst_reg_tb -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH shifter_tb -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME Micro16_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id Micro16_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME Micro16_tb -section_id Micro16_tb
@@ -95,13 +95,15 @@ set_global_assignment -name EDA_TEST_BENCH_NAME micro_seq_tb -section_id eda_sim
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id micro_seq_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME micro_seq_tb -section_id micro_seq_tb
 set_global_assignment -name VHDL_FILE micro_inst_reg.vhd
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name VHDL_FILE micro_inst_reg_tb.vhd
 set_global_assignment -name EDA_TEST_BENCH_NAME micro_inst_reg_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id micro_inst_reg_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME micro_inst_reg_tb -section_id micro_inst_reg_tb
+set_global_assignment -name VHDL_FILE shifter.vhd
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VHDL_FILE shifter_tb.vhd
 set_global_assignment -name EDA_TEST_BENCH_FILE Micro16_tb.vhd -section_id Micro16_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE decoder_tb.vhd -section_id decoder_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE alu_tb.vhd -section_id alu_tb
@@ -109,4 +111,8 @@ set_global_assignment -name EDA_TEST_BENCH_FILE reg_tb.vhd -section_id reg_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE register_bank_tb.vhd -section_id register_bank_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE micro_seq_tb.vhd -section_id micro_seq_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE micro_inst_reg_tb.vhd -section_id micro_inst_reg_tb
+set_global_assignment -name EDA_TEST_BENCH_NAME shifter_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id shifter_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME shifter_tb -section_id shifter_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE shifter_tb.vhd -section_id shifter_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
