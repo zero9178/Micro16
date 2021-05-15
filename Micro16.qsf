@@ -114,7 +114,6 @@ set_global_assignment -name VHDL_FILE memory_buffer.vhd
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "800 ns" -section_id Micro16_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE Micro16_tb.vhd -section_id Micro16_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE decoder_tb.vhd -section_id decoder_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE alu_tb.vhd -section_id alu_tb
