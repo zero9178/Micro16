@@ -80,6 +80,7 @@ begin
     write_data <= to_bitvector(data_bus);
     
     ram : entity work.ram
+                generic map(size => 2**16)
                 port map(clk => eigth_clock,
                          address => data_word(address_bus),
                          write_enable => write_enable,

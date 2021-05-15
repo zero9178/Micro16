@@ -5,6 +5,7 @@ use ieee.numeric_bit.all;
 use work.isa.all;
 
 entity ram is
+    generic(size : natural);
     port(clk, write_enable : in bit;
          address : in unsigned;
          write_data : in bit_vector;
@@ -13,7 +14,9 @@ end entity;
 
 architecture behavioural of ram is
 
-    type memory_t is array (0 to 2**16 - 1) of bit_vector(write_data'length - 1 downto 0);
+    
+
+    type memory_t is array (0 to size - 1) of bit_vector(write_data'length - 1 downto 0);
     signal memory : memory_t;
     
 begin
